@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tớ thích cậu, Kim Ngân 💖</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- nền hiệu ứng -->
+  <canvas id="fx"></canvas>
+
+  <!-- thanh nhạc (bạn có thể thay file mp3 của bạn) -->
+  <audio id="bgm" loop>
+    <!-- Nếu bạn có file nhạc: đặt tên "music.mp3" cùng thư mục -->
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Intro -->
+  <section class="screen intro" id="intro">
+    <div class="card glass">
+      <div class="badge">💌 Một điều muốn nói với</div>
+      <h1>Thạch Kim Ngân</h1>
+      <p class="muted">Nhấn “Bắt đầu” nha…</p>
+
+      <div class="row">
+        <button class="btn primary" id="startBtn">Bắt đầu ✨</button>
+        <button class="btn" id="musicBtn" title="Bật / tắt nhạc">🎵 Nhạc</button>
+      </div>
+
+      <p class="tiny muted">
+        (Nếu web không phát nhạc tự động, hãy nhấn nút 🎵 một lần.)
+      </p>
+    </div>
+  </section>
+
+  <!-- Main -->
+  <main class="screen main hidden" id="main">
+    <header class="top">
+      <div class="logo">
+        <span class="dot"></span>
+        <span>For <b>Kim Ngân</b></span>
+      </div>
+      <div class="top-actions">
+        <button class="chip" id="sparkBtn">🎆 Pháo hoa</button>
+        <button class="chip" id="heartBtn">💗 Tim bay</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h2>
+          Kim Ngân à,
+          <span class="shine">tớ có điều muốn nói…</span>
+        </h2>
+
+        <div class="typebox glass">
+          <p id="typeText" class="type"></p>
+          <span class="cursor">▍</span>
+        </div>
+
+        <div class="cta">
+          <button class="btn primary" id="nextBtn">Xem tiếp 👉</button>
+          <button class="btn" id="confettiBtn">Rải hoa 🎊</button>
+        </div>
+
+        <p class="tiny muted">
+          Gợi ý: bấm 🎆 / 💗 phía trên để tăng độ “lụi tim” 😄
+        </p>
+      </div>
+
+      <div class="hero-right glass">
+        <div class="photo">
+          <div class="ring"></div>
+          <div class="avatar" aria-label="Ảnh kỷ niệm">
+            <!-- Bạn thay ảnh bằng cách đổi background-image trong CSS hoặc thêm <img> -->
+            <span>📷</span>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="k">100%</div>
+            <div class="v">thích Kim Ngân</div>
+          </div>
+          <div class="stat">
+            <div class="k">∞</div>
+            <div class="v">thương lâu dài</div>
+          </div>
+          <div class="stat">
+            <div class="k">1</div>
+            <div class="v">lời tỏ tình</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memory / Album -->
+    <section class="album">
+      <h3 class="section-title">Một vài “khoảnh khắc” tớ muốn giữ mãi</h3>
+      <div class="grid">
+        <article class="tile glass">
+          <div class="thumb">🌙</div>
+          <h4>Những lần nói chuyện khuya</h4>
+          <p class="muted">Tớ thích cách Ngân làm mọi thứ trở nên ấm áp.</p>
+        </article>
+
+        <article class="tile glass">
+          <div class="thumb">☕</div>
+          <h4>Một ly cà phê</h4>
+          <p class="muted">Chỉ cần đi cùng Ngân, nơi nào cũng thành “điểm hẹn”.</p>
+        </article>
+
+        <article class="tile glass">
+          <div class="thumb">🎧</div>
+          <h4>Một bài nhạc chung</h4>
+          <p class="muted">Tớ muốn playlist của mình có Ngân… và cả tương lai.</p>
+        </article>
+
+        <article class="tile glass">
+          <div class="thumb">🌸</div>
+          <h4>Những điều nhỏ xíu</h4>
+          <p class="muted">Nhưng với tớ, đó là hạnh phúc.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Question -->
+    <section class="question">
+      <div class="card big glass">
+        <h3>Thạch Kim Ngân ơi…</h3>
+        <p class="muted">Em có đồng ý làm người yêu anh không?</p>
+
+        <div class="row center" id="btnRow">
+          <button class="btn primary" id="yesBtn">Đồng ý 💍</button>
+          <button class="btn danger" id="noBtn">Không 😶</button>
+        </div>
+
+        <p class="tiny muted" id="hintText">(* Nút “Không” hơi… nhút nhát 😄)</p>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section class="screen result hidden" id="result">
+      <div class="card glass">
+        <h2>Yayyyy! 💖</h2>
+        <p id="resultText" class="muted"></p>
+
+        <div class="row">
+          <button class="btn primary" id="downloadBtn">Tải “thư tình” 📄</button>
+          <button class="btn" id="restartBtn">Xem lại 🔁</button>
+        </div>
+
+        <p class="tiny muted">Chụp màn hình khoảnh khắc này cũng dễ thương lắm đó 😊</p>
+      </div>
+    </section>
+
+    <footer class="footer muted">
+      Made with 💙 — from anh to Kim Ngân
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
